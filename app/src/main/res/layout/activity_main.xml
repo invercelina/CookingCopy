@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/pasta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="물이 끓으면 면을 넣어주세요\n면 삶는 시간은 면의 포장지에 표시되어 있는\n시간보다 2분 정도 줄여서 삶아주세요"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_main" />
+
+    <EditText
+        android:id="@+id/et_hour"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:hint="00"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@id/tv_hourcolon"
+        app:layout_constraintStart_toStartOf="@id/tv_description"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    <TextView
+        android:id="@+id/tv_hourcolon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=":"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/et_hour"
+        app:layout_constraintEnd_toStartOf="@id/et_minute"
+        app:layout_constraintStart_toEndOf="@id/et_hour"
+        app:layout_constraintTop_toTopOf="@id/et_hour" />
+
+    <EditText
+        android:id="@+id/et_minute"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:hint="00"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@id/tv_minutecolon"
+        app:layout_constraintStart_toEndOf="@id/tv_hourcolon"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    <TextView
+        android:id="@+id/tv_minutecolon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=":"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/et_minute"
+        app:layout_constraintEnd_toEndOf="@id/et_second"
+        app:layout_constraintStart_toEndOf="@id/et_minute"
+        app:layout_constraintTop_toTopOf="@id/et_minute" />
+
+    <EditText
+        android:id="@+id/et_second"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:hint="00"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@id/tv_description"
+        app:layout_constraintStart_toEndOf="@id/tv_minutecolon"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    <Button
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_minute"
+        android:text="시작"
+        android:textStyle="bold"
+        android:id="@+id/btn_start"
+        android:layout_height="wrap_content"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
