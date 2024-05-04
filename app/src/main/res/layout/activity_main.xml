@@ -103,18 +103,54 @@
         app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
     <Button
+        android:id="@+id/btn_start"
         android:layout_width="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_minute"
+        android:layout_height="wrap_content"
         android:text="시작"
         android:textStyle="bold"
-        android:id="@+id/btn_start"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_minute" />
 
+    <TextView
+        android:id="@+id/tv_hour"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:text="10"
+        android:textSize="33.5sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@id/tv_hourcolon"
+        app:layout_constraintStart_toStartOf="@id/tv_description"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
+    <TextView
+        android:id="@+id/tv_minute"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:text="10"
+        android:textSize="33.5sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@id/tv_minutecolon"
+        app:layout_constraintStart_toEndOf="@id/tv_hourcolon"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
+    <TextView
+        android:id="@+id/tv_second"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:text="10"
+        android:textSize="33.5sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@id/tv_description"
+        app:layout_constraintStart_toEndOf="@id/tv_minutecolon"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
