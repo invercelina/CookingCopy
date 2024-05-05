@@ -96,8 +96,6 @@ public class MainActivity extends AppCompatActivity {
                             hour--;
                         } else {
                             Toast.makeText(MainActivity.this, "타이머가 종료되었습니다", Toast.LENGTH_SHORT).show();
-                            timer.cancel();
-
                             ethour.setVisibility(View.VISIBLE);
                             etminute.setVisibility(View.VISIBLE);
                             etsecond.setVisibility(View.VISIBLE);
@@ -106,6 +104,15 @@ public class MainActivity extends AppCompatActivity {
                             tvminute.setVisibility(View.INVISIBLE);
                             tvsecond.setVisibility(View.INVISIBLE);
 
+                            ethour.setText("");
+                            etminute.setText("");
+                            etsecond.setText("");
+
+                            ethour.setHint("00");
+                            etminute.setHint("00");
+                            etsecond.setHint("00");
+
+                            timer.cancel();
 
                         }
                     }
