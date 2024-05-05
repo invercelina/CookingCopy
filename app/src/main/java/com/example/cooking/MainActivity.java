@@ -12,8 +12,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
+
+    public int hour = 0;
+    public int minute = 0;
+    public int second = 0;
+
+    public TextView tvhour;
+    public TextView tvminute;
+    public TextView tvsecond;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +36,13 @@ public class MainActivity extends AppCompatActivity {
         EditText etminute = findViewById(R.id.et_minute);
         EditText etsecond = findViewById(R.id.et_second);
 
-        TextView tvhour = findViewById(R.id.tv_hour);
-        TextView tvminute = findViewById(R.id.tv_minute);
-        TextView tvsecond = findViewById(R.id.tv_second);
+        tvhour = findViewById(R.id.tv_hour);
+        tvminute = findViewById(R.id.tv_minute);
+        tvsecond = findViewById(R.id.tv_second);
 
         Button startbtn = findViewById(R.id.btn_start);
 
-        int hour;
-        int minute;
-        int second;
+
 
         startbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,17 +55,44 @@ public class MainActivity extends AppCompatActivity {
                 tvminute.setVisibility(View.VISIBLE);
                 tvsecond.setVisibility(View.VISIBLE);
 
-                inputNumber(ethour, tvhour);
-                inputNumber(etminute, tvminute);
-                inputNumber(etsecond, tvsecond);
+                hour = Integer.parseInt(ethour.getText().toString());
+                minute = Integer.parseInt(etminute.getText().toString());
+                second = Integer.parseInt(etsecond.getText().toString());
+
+                startTimer();
+
             }
         });
 
     }
 
-    public void inputNumber(EditText editText, TextView textView) {
-        int number = Integer.parseInt(editText.getText().toString());
-        textView.setText(String.valueOf(number));
+
+    public void startTimer() {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+
+                tvhour.setText(String.format("%02d",hour));
+                tvminute.setText(String.format("%02d",minute));
+                tvsecond.setText(String.format("%02d",second));
+
+                if(second!=0){
+                    second--;
+                } else if(minute!=0){
+                    second=59;
+                    minute--;
+                } else if(hour!=0){
+                    second=59;
+                    minute=59;
+                    hour--;
+                }
+                if(hour==0&&minute==0&&second==0){
+                    timer.cancel();
+                }
+            }
+        };
+        timer.schedule(timerTask,0,1000);
     }
 
 }
