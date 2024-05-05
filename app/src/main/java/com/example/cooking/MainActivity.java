@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,15 +27,19 @@ public class MainActivity extends AppCompatActivity {
     public TextView tvminute;
     public TextView tvsecond;
 
+    public EditText ethour;
+    public EditText etminute;
+    public EditText etsecond;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        EditText ethour = findViewById(R.id.et_hour);
-        EditText etminute = findViewById(R.id.et_minute);
-        EditText etsecond = findViewById(R.id.et_second);
+        ethour = findViewById(R.id.et_hour);
+        etminute = findViewById(R.id.et_minute);
+        etsecond = findViewById(R.id.et_second);
 
         tvhour = findViewById(R.id.tv_hour);
         tvminute = findViewById(R.id.tv_minute);
@@ -72,24 +77,39 @@ public class MainActivity extends AppCompatActivity {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
 
-                tvhour.setText(String.format("%02d",hour));
-                tvminute.setText(String.format("%02d",minute));
-                tvsecond.setText(String.format("%02d",second));
+                        tvhour.setText(String.format("%02d", hour));
+                        tvminute.setText(String.format("%02d", minute));
+                        tvsecond.setText(String.format("%02d", second));
 
-                if(second!=0){
-                    second--;
-                } else if(minute!=0){
-                    second=59;
-                    minute--;
-                } else if(hour!=0){
-                    second=59;
-                    minute=59;
-                    hour--;
-                }
-                if(hour==0&&minute==0&&second==0){
-                    timer.cancel();
-                }
+                        if (second != 0) {
+                            second--;
+                        } else if (minute != 0) {
+                            second = 59;
+                            minute--;
+                        } else if (hour != 0) {
+                            second = 59;
+                            minute = 59;
+                            hour--;
+                        } else {
+                            Toast.makeText(MainActivity.this, "타이머가 종료되었습니다", Toast.LENGTH_SHORT).show();
+                            timer.cancel();
+
+                            ethour.setVisibility(View.VISIBLE);
+                            etminute.setVisibility(View.VISIBLE);
+                            etsecond.setVisibility(View.VISIBLE);
+
+                            tvhour.setVisibility(View.INVISIBLE);
+                            tvminute.setVisibility(View.INVISIBLE);
+                            tvsecond.setVisibility(View.INVISIBLE);
+
+
+                        }
+                    }
+                });
             }
         };
         timer.schedule(timerTask,0,1000);
