@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
                 tvminute.setVisibility(View.VISIBLE);
                 tvsecond.setVisibility(View.VISIBLE);
 
-                hour = Integer.parseInt(ethour.getText().toString());
-                minute = Integer.parseInt(etminute.getText().toString());
-                second = Integer.parseInt(etsecond.getText().toString());
+                hour = ethour.length()==0 ? 0 : Integer.parseInt(ethour.getText().toString());
+                minute = etminute.length()==0 ? 0 : Integer.parseInt(etminute.getText().toString());
+                second = etsecond.length()==0 ? 0 : Integer.parseInt(etsecond.getText().toString());
 
                 startTimer();
 
